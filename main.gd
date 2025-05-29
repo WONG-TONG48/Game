@@ -2,29 +2,30 @@ extends Node
 
 var level:TileMapLayer
 var characters:Node
+var levelNum := 1
 
 func load_level() -> void:
 	for i:CharacterBody2D in characters.get_children():
-		i.reset()
+		i.disable()
 	for i:Marker2D in level.get_children():
 		if i.name.match("*Pos"):
-			var object = characters.find_child(i.name.left(-3))
+			var object = characters.get_node(i.name.left(-3))
 			object.position = i.position
-			object.enabled=true
-			object.visible=true
+			object.enable()
 
-	
+func set_current_level() -> void:
+	if level != null:
+		level.enabled=false
+	level = $Level.get_node("Level"+str(levelNum))
+	level.enabled=true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	level =$Level1
+	for i in $Level.get_children():
+		i.enabled=false
+	set_current_level()
 	characters=$Characters
 	load_level()
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 
 func _on_player_die() -> void:
