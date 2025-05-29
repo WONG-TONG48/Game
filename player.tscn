@@ -696,4 +696,4 @@ visible = false
 position = Vector2(2.5, -99.5)
 shape = SubResource("RectangleShape2D_4flbx")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]

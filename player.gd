@@ -12,23 +12,32 @@ var jumps:Array[Array]
 var jump :bool
 var move:Array[Array]
 var last:float
-var enabled:bool
+signal levelCleared
 signal die
 
-func reset() -> void:
+func disable() -> void:
 	move.clear()
-	jump=false
-	enabled=false
 	direction=0
 	jumps.clear()
+	last=0
 	jump=false
+	velocity=Vector2.ZERO
 	visible=false
+	set_physics_process(false)
+	
+func enable() -> void:
+	visible=true
+	set_physics_process(true)
+	if Input.is_action_pressed("jump"):
+		jumps.append([Time.get_ticks_msec()+delay*1000,true])
+	var val = Input.get_axis("move_left", "move_right")
+	if val!=0:
+		move.append([Time.get_ticks_msec()+delay*1000,val])
+
+func _ready() -> void:
+	disable()
 
 func _physics_process(delta: float) -> void:
-	if !enabled:
-		$CollisionShape2D.disabled = true
-		return
-	# Add the gravity.
 	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -68,7 +77,8 @@ func _physics_process(delta: float) -> void:
 	last=val
 	move_and_slide()
 
-
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	die.emit()
 	
+
+
+func _on_area_2d_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	die.emit()
