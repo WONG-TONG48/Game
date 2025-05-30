@@ -598,6 +598,7 @@ size = Vector2(43, 197)
 
 [node name="Player" type="CharacterBody2D"]
 modulate = Color(1, 0.35, 0.35, 1)
+position = Vector2(-2, 0)
 floor_stop_on_slope = false
 script = ExtResource("1_4flbx")
 
@@ -687,13 +688,23 @@ visible = false
 position = Vector2(2.5, -99.5)
 shape = SubResource("RectangleShape2D_4flbx")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Spike" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spike"]
 visible = false
 position = Vector2(2.5, -99.5)
 shape = SubResource("RectangleShape2D_4flbx")
 
-[connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]
+[node name="Win" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Win"]
+visible = false
+position = Vector2(2.5, -99.5)
+shape = SubResource("RectangleShape2D_4flbx")
+
+[connection signal="body_entered" from="Spike" to="." method="_on_spike_body_entered"]
+[connection signal="body_entered" from="Win" to="." method="_on_win_body_entered"]
