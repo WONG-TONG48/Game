@@ -4,6 +4,8 @@ var level:TileMapLayer
 var characters:Node
 var levelNum := 1
 var maxLevel:int
+var camera:Camera2D
+var died :=false
 
 func load_level() -> void:
 	for i:CharacterBody2D in characters.get_children():
@@ -20,6 +22,7 @@ func set_current_level() -> void:
 		level.visible=false
 	maxLevel=$Level.get_child_count()
 	level = $Level.get_node("Level"+str(levelNum))
+	camera=$Characters/Player/Camera2D
 	level.enabled=true
 	level.visible=true
 
@@ -32,13 +35,25 @@ func _ready() -> void:
 	characters=$Characters
 	load_level()
 
-
 func _on_player_die() -> void:
-	load_level()
+	$AnimationPlayer.play("Clear")
+	$DeathTimer.start()
 
 
 func _on_player_level_cleared() -> void:
 	if levelNum != maxLevel:
-		levelNum+=1
-		set_current_level()
-		load_level()
+		$ClearTimer.start()
+		$AnimationPlayer.play("Clear")
+		
+		
+
+
+func _on_death_timer_timeout() -> void:
+	load_level()
+	
+
+
+func _on_clear_timer_timeout() -> void:
+	levelNum+=1
+	set_current_level()
+	load_level()
