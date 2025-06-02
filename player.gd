@@ -71,7 +71,7 @@ func _physics_process(delta: float) -> void:
 	if direction:
 		velocity.x = move_toward(velocity.x, MAX_SPEED * direction, SPEED * delta)
 	else:
-		velocity.x = move_toward(velocity.x, 0, 500*delta)
+		velocity.x = move_toward(velocity.x, 0, 1000*delta)
 	$RightArrow.visible = direction==1
 	$LeftArrow.visible = direction==-1
 	last=val
@@ -80,5 +80,11 @@ func _physics_process(delta: float) -> void:
 	
 
 
-func _on_area_2d_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+
+
+func _on_spike_body_entered(body: Node2D) -> void:
 	die.emit()
+
+
+func _on_win_body_entered(body: Node2D) -> void:
+	levelCleared.emit()

@@ -464,12 +464,12 @@ animation = &"fall"
 animation = &"jump"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dw050"]
-xfade_time = 0.1
+xfade_time = 0.2
 advance_mode = 2
 advance_expression = "direction"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b26j0"]
-xfade_time = 0.1
+xfade_time = 0.2
 advance_mode = 2
 advance_expression = "!direction"
 
@@ -527,7 +527,7 @@ states/fall/position = Vector2(571, 182.199)
 states/jump/node = SubResource("AnimationNodeAnimation_dw050")
 states/jump/position = Vector2(537.199, -5.40628)
 transitions = ["Idle", "Run", SubResource("AnimationNodeStateMachineTransition_dw050"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_b26j0"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_4flbx"), "Idle", "jump", SubResource("AnimationNodeStateMachineTransition_n7ghd"), "Run", "jump", SubResource("AnimationNodeStateMachineTransition_nvl01"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_ivps1"), "Run", "fall", SubResource("AnimationNodeStateMachineTransition_urp6f"), "Idle", "fall", SubResource("AnimationNodeStateMachineTransition_bwjto"), "fall", "jump", SubResource("AnimationNodeStateMachineTransition_606se"), "fall", "Idle", SubResource("AnimationNodeStateMachineTransition_u1c27"), "jump", "Idle", SubResource("AnimationNodeStateMachineTransition_sweqy")]
-graph_offset = Vector2(-206.278, -102.195)
+graph_offset = Vector2(-137.538, -35.403)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_b26j0"]
 animation = &"Left"
@@ -598,6 +598,7 @@ size = Vector2(43, 197)
 
 [node name="Player" type="CharacterBody2D"]
 modulate = Color(1, 0.35, 0.35, 1)
+position = Vector2(-2, 0)
 floor_stop_on_slope = false
 script = ExtResource("1_4flbx")
 
@@ -687,13 +688,23 @@ visible = false
 position = Vector2(2.5, -99.5)
 shape = SubResource("RectangleShape2D_4flbx")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Spike" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spike"]
 visible = false
 position = Vector2(2.5, -99.5)
 shape = SubResource("RectangleShape2D_4flbx")
 
-[connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]
+[node name="Win" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Win"]
+visible = false
+position = Vector2(2.5, -99.5)
+shape = SubResource("RectangleShape2D_4flbx")
+
+[connection signal="body_entered" from="Spike" to="." method="_on_spike_body_entered"]
+[connection signal="body_entered" from="Win" to="." method="_on_win_body_entered"]
