@@ -1,4 +1,102 @@
-[gd_scene format=3 uid="uid://dirisri6fw2vk"]
+[gd_scene load_steps=9 format=3 uid="uid://dirisri6fw2vk"]
+
+[ext_resource type="Script" uid="uid://cew35a4wx6c8t" path="res://main_menu.gd" id="1_7jlr6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7jlr6"]
+bg_color = Color(6.93083e-06, 0.641792, 0.930136, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.552941)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_enwfr"]
+bg_color = Color(6.93083e-06, 0.641792, 0.930136, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.76, 0.76, 0.76, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.552941)
+shadow_size = 5
+
+[sub_resource type="Theme" id="Theme_enwfr"]
+Button/font_sizes/font_size = 88
+Button/styles/hover = SubResource("StyleBoxFlat_7jlr6")
+Button/styles/normal = SubResource("StyleBoxFlat_enwfr")
+Button/styles/pressed = SubResource("StyleBoxFlat_7jlr6")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_um2lw"]
+bg_color = Color(2.16588e-06, 0.711544, 0.460326, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.552941)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m82ya"]
+bg_color = Color(2.16588e-06, 0.711544, 0.460326, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.760784, 0.760784, 0.760784, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.552941)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_juxkc"]
+bg_color = Color(1, 0.328057, 0.384118, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.552941)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dg1fb"]
+bg_color = Color(1, 0.328057, 0.384118, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.76, 0.76, 0.76, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.552941)
+shadow_size = 5
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -7,6 +105,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_7jlr6")
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
 layout_mode = 1
@@ -16,26 +115,44 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="BoxContainer" type="BoxContainer" parent="AspectRatioContainer"]
 layout_mode = 2
 alignment = 1
 vertical = true
 
-[node name="Button" type="Button" parent="AspectRatioContainer/BoxContainer"]
+[node name="Start Button" type="Button" parent="AspectRatioContainer/BoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = SubResource("Theme_enwfr")
 text = "Start"
 
-[node name="Button2" type="Button" parent="AspectRatioContainer/BoxContainer"]
+[node name="Levels Button" type="Button" parent="AspectRatioContainer/BoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "Start"
+theme = SubResource("Theme_enwfr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_um2lw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_um2lw")
+theme_override_styles/normal = SubResource("StyleBoxFlat_m82ya")
+text = "Levels"
 
-[node name="Button3" type="Button" parent="AspectRatioContainer/BoxContainer"]
+[node name="Quit Button" type="Button" parent="AspectRatioContainer/BoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "Start"
+theme = SubResource("Theme_enwfr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_juxkc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_juxkc")
+theme_override_styles/normal = SubResource("StyleBoxFlat_dg1fb")
+text = "Quit"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="pressed" from="AspectRatioContainer/BoxContainer/Start Button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="AspectRatioContainer/BoxContainer/Quit Button" to="." method="_on_quit_button_pressed"]

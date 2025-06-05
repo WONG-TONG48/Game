@@ -85,6 +85,5 @@ func _physics_process(delta: float) -> void:
 func _on_spike_body_entered(body: Node2D) -> void:
 	die.emit()
 
-
 func _on_win_body_entered(body: Node2D) -> void:
 	levelCleared.emit()
