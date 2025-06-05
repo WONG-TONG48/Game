@@ -635,7 +635,6 @@ floor_stop_on_slope = false
 script = ExtResource("1_4flbx")
 
 [node name="Body" type="Node2D" parent="."]
-scale = Vector2(-1, 1)
 
 [node name="Torso" type="Line2D" parent="Body"]
 position = Vector2(0, -19.4737)
@@ -712,6 +711,7 @@ position = Vector2(64, -224)
 scale = Vector2(0.5, 0.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-7.62939e-06, -100)
 rotation = -1.5708
 scale = Vector2(0.5, 0.5)
@@ -727,6 +727,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Spike"]
+visible = false
 position = Vector2(-7.62939e-06, -100)
 rotation = -1.5708
 scale = Vector2(0.5, 0.5)
@@ -737,6 +738,7 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Win"]
+visible = false
 position = Vector2(-7.62939e-06, -100)
 rotation = -1.5708
 scale = Vector2(0.5, 0.5)
