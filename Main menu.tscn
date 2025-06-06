@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dirisri6fw2vk"]
+[gd_scene load_steps=11 format=3 uid="uid://dirisri6fw2vk"]
 
 [ext_resource type="Script" uid="uid://cew35a4wx6c8t" path="res://main_menu.gd" id="1_7jlr6"]
 
@@ -98,6 +98,13 @@ corner_radius_bottom_left = 10
 shadow_color = Color(0, 0, 0, 0.552941)
 shadow_size = 5
 
+[sub_resource type="Theme" id="Theme_7jlr6"]
+GridContainer/constants/h_separation = 30
+GridContainer/constants/v_separation = 30
+
+[sub_resource type="Theme" id="Theme_um2lw"]
+Button/font_sizes/font_size = 110
+
 [node name="Main Menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -154,5 +161,140 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="Levels" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 0.702
+anchor_bottom = 0.5
+offset_left = 120.0
+offset_top = -363.0
+offset_right = -0.840088
+offset_bottom = 363.0
+grow_vertical = 2
+theme = SubResource("Theme_7jlr6")
+columns = 5
+
+[node name="Button" type="Button" parent="Levels"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_um2lw")
+text = "1"
+
+[node name="Button2" type="Button" parent="Levels"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_um2lw")
+text = "1"
+
+[node name="Button3" type="Button" parent="Levels"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_um2lw")
+text = "1"
+
+[node name="Button4" type="Button" parent="Levels"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_um2lw")
+text = "1"
+
+[node name="Button5" type="Button" parent="Levels"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_um2lw")
+text = "1"
+
+[node name="Button6" type="Button" parent="Levels"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_um2lw")
+text = "1"
+
+[node name="Button7" type="Button" parent="Levels"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_um2lw")
+text = "1"
+
+[node name="Button8" type="Button" parent="Levels"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_um2lw")
+text = "1"
+
+[node name="Button9" type="Button" parent="Levels"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_um2lw")
+text = "1"
+
+[node name="Button10" type="Button" parent="Levels"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_um2lw")
+text = "1"
+
+[node name="Button11" type="Button" parent="Levels"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_um2lw")
+text = "1"
+
+[node name="Button12" type="Button" parent="Levels"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_um2lw")
+text = "1"
+
+[node name="Button13" type="Button" parent="Levels"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_um2lw")
+text = "1"
+
+[node name="Button14" type="Button" parent="Levels"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_um2lw")
+text = "1"
+
+[node name="Button15" type="Button" parent="Levels"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_um2lw")
+text = "1"
+
+[node name="Button16" type="Button" parent="Levels"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_um2lw")
+text = "1"
+
+[node name="Button17" type="Button" parent="Levels"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_um2lw")
+text = "1"
+
+[node name="Button18" type="Button" parent="Levels"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_um2lw")
+text = "1"
+
+[node name="Button19" type="Button" parent="Levels"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_um2lw")
+text = "1"
+
+[node name="Button20" type="Button" parent="Levels"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_um2lw")
+text = "1"
+
 [connection signal="pressed" from="AspectRatioContainer/BoxContainer/Start Button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="AspectRatioContainer/BoxContainer/Levels Button" to="." method="_on_levels_button_pressed"]
 [connection signal="pressed" from="AspectRatioContainer/BoxContainer/Quit Button" to="." method="_on_quit_button_pressed"]
